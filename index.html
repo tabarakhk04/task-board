@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tasks Board</title>
+
+    <!-- Google Fonts: Inter + Material Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="icon" href="./Task Board.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="board">
+      <header class="board-header">
+        <div class="board-header-top">
+          <h1>Tasks Board</h1>
+
+          <div class="board-header-actions">
+            <button id="layout-toggle" type="button" class="ghost-btn">
+              <span class="material-symbols-rounded"> view_agenda </span>
+              <span>List layout</span>
+            </button>
+
+            <button id="export-btn" type="button" class="ghost-btn">
+              <span class="material-symbols-rounded"> download </span>
+              <span>Export (.json)</span>
+            </button>
+
+            <button id="import-btn" type="button" class="ghost-btn">
+              <span class="material-symbols-rounded"> upload </span>
+              <span>Import (.json)</span>
+            </button>
+
+            <input
+              type="file"
+              id="import-input"
+              accept="application/json"
+              style="display: none"
+            />
+
+            <button
+              id="clear-all-btn"
+              type="button"
+              class="ghost-btn ghost-btn--danger"
+            >
+              <span class="material-symbols-rounded"> delete_sweep </span>
+              <span>Clear all projects</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Add task to current project -->
+        <form id="add-task-form" class="add-task-form">
+          <input
+            type="text"
+            id="new-task-title"
+            placeholder="Add new task to current project..."
+            autocomplete="off"
+          />
+          <button type="submit">
+            <span class="material-symbols-rounded"> add </span>
+            <span>Add Task</span>
+          </button>
+        </form>
+      </header>
+
+      <!-- Projects tabs -->
+      <nav id="projects-tabs" class="projects-tabs">
+        <!-- rendered by JS -->
+      </nav>
+
+      <!-- Global progress for all projects -->
+      <section id="global-progress" class="global-progress"></section>
+
+      <!-- Current project header + actions -->
+      <section id="project-header" class="project-header"></section>
+
+      <!-- Project-level progress -->
+      <section id="project-progress" class="project-progress"></section>
+
+      <!-- Tasks of the current project -->
+      <section id="tasks-container" class="tasks-container">
+        <!-- Cards are rendered by JS -->
+      </section>
+    </main>
+
+    <div id="dialog-backdrop" class="dialog-backdrop hidden">
+      <div class="dialog">
+        <h2 id="dialog-title" class="dialog-title"></h2>
+        <p id="dialog-message" class="dialog-message"></p>
+        <div id="dialog-extra" class="dialog-extra"></div>
+        <div class="dialog-actions">
+          <button
+            id="dialog-cancel"
+            type="button"
+            class="dialog-btn dialog-btn--secondary"
+          >
+            Cancel
+          </button>
+          <button
+            id="dialog-confirm"
+            type="button"
+            class="dialog-btn dialog-btn--primary"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
